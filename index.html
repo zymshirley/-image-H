@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>我的图标库</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  h1 { text-align: center; }
+  .icon-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+  .icon-item { text-align: center; }
+  .icon-item img { width: 80px; height: 80px; object-fit: contain; cursor: pointer; border: 1px solid #ccc; padding: 5px; border-radius: 8px; }
+  .icon-item span { display: block; margin-top: 5px; font-size: 12px; word-break: break-all; }
+</style>
+</head>
+<body>
+<h1>我的图标库</h1>
+<div class="icon-grid" id="iconGrid">
+  <!-- 图标会自动加载 -->
+</div>
+
+<script>
+// 这里列出你的图标文件名
+const icons = [
+  "旗袍.png",
+  "运动.png",
+  "JK.png",
+  "OL.png",
+  "女仆.png",
+  "泳衣.png",
+  "黑丝.png",
+  "和服浴衣.png",
+  "婚纱.png",
+  "兽耳.png",
+  "兔女郎.png"
+  // 以后新增图标，只需要加名字即可
+];
+
+const container = document.getElementById('iconGrid');
+
+icons.forEach(name => {
+  const div = document.createElement('div');
+  div.className = 'icon-item';
+
+  const img = document.createElement('img');
+  img.src = `icons/${name}`;
+  img.alt = name;
+
+  // 点击复制链接
+  img.addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.origin + '/icons/' + name)
+      .then(() => alert(`已复制链接: ${name}`));
+  });
+
+  const span = document.createElement('span');
+  span.textContent = name;
+
+  div.appendChild(img);
+  div.appendChild(span);
+  container.appendChild(div);
+});
+</script>
+</body>
+</html>
